@@ -10,7 +10,7 @@ namespace SharpDeploy.Tests
         public void TestDiffFilles()
         {
             var c = new GitClient(@"D:\Contrib\SharpDeploy");
-            var files = c.DiffFiles("9ca499682524d4ec402a1f8297edd92c0de1ccf7", "c773b84fc1accc2e2c4fa4138cb03c909c06ad2f");
+            var files = c.DiffFiles("171adcad2bb8af1fa98f2fca48fbf01bf4631a1a", "5d71ebd7384f2d4bfbaf9ef76e5cf0a32f4a12ad");
             foreach (var f in files) {
                 Console.WriteLine(f);
             }
