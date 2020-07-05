@@ -32,7 +32,7 @@ namespace SharpDeploy
                 string filename = Path.Combine(path, f);
                 
                 OnDeploying(new MessageEventArgs("Deploying " + filename + "..."));
-                string file = filename.Replace(path, "");
+                string file = filename.Replace(path + "\\", "");
                 ftp.Upload(filename, file);
             }
         }

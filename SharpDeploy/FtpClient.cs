@@ -22,7 +22,7 @@ namespace SharpDeploy
             using (var client = new WebClient()) {
                 client.Credentials = new NetworkCredential(username, password);
                 OnUploading(new MessageEventArgs("Uploading " + file + "..."));
-                CreateDirectory("test");
+//                CreateDirectory("test");
                 client.UploadFile("ftp://" + host + "/" + file, WebRequestMethods.Ftp.UploadFile, path);
             }
         }
