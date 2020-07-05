@@ -19,7 +19,7 @@ namespace SharpDeploy.Tests
             d.Deploying += delegate(object sender, MessageEventArgs e) { 
                 Console.WriteLine(e.Message);
             };
-            d.Deploy();
+            d.Deploy("", "");
         }
     }
 }

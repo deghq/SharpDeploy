@@ -13,12 +13,17 @@ namespace SharpDeploy
             repo = new Repository(path);
         }
         
-        public List<string> DiffFiles()
+        public List<string> DiffFiles(string shaFrom, string shaTo)
         {
             var files = new List<string>();
             
-            foreach (TreeEntryChanges c in repo.Diff.Compare<TreeChanges>(repo.Head.Tip.Tree,
-                                                                          DiffTargets.Index | DiffTargets.WorkingDirectory)) {
+//            var from = repo.Head.Tip.Tree;
+//            var to = DiffTargets.WorkingDirectory;
+            
+            var from = repo.Lookup<Commit>(shaFrom);
+            var to = repo.Lookup<Commit>(shaTo);
+            
+            foreach (TreeEntryChanges c in repo.Diff.Compare<TreeChanges>(from.Tree, to.Tree)) {
                 files.Add(c.Path);
             }
             return files;

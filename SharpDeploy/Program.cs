@@ -11,7 +11,7 @@ namespace SharpDeploy
                 return;
             }
             
-            string _from = ""; // TODO:
+            string from = ""; // TODO:
             string to = ""; // TODO:
             
             string directory = args[0];
@@ -26,8 +26,7 @@ namespace SharpDeploy
                 deployer.Deploying += delegate(object sender, MessageEventArgs e) {
                     Console.WriteLine(e.Message);
                 };
-//                deployer.Deploy(_from, to);
-                deployer.Deploy();
+                deployer.Deploy(from, to);
             } catch (Exception ex) {
                 Console.WriteLine(ex.Message);
             }
