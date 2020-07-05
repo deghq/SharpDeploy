@@ -11,11 +11,11 @@ namespace SharpDeploy
             this.version = version;
         }
         
-        public void Deploy()
+        public void Deploy(string path)
         {
-            var git = new GitClient(".");
+            var git = new GitClient(path);
             string _from = "";
-            string _to;
+            string to = "";
             var files = git.DiffFiles(_from, to);
         }
     }

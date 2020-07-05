@@ -17,25 +17,19 @@ namespace SharpDeploy
         {
             var files = new List<string>();
             
-//            foreach (TreeEntryChanges c in repo.Diff.Compare<TreeChanges>(repo.Head.Tip.Tree,
-//                                                                          DiffTargets.Index | DiffTargets.WorkingDirectory)) {
-//                Console.WriteLine(c.Path);
-//            }
-
-CommitFilter cf = new CommitFilter
-    {
-        SortBy = CommitSortStrategies.Reverse | CommitSortStrategies.Time,
-        ExcludeReachableFrom = repo.Branches["develop"].Tip,
-        IncludeReachableFrom = repo.Head.Tip
-    };
-
-    var results = repo.Commits.QueryBy(cf);
-
-    foreach (var result in results)
-    {
-        //Process commits here.
-        Console.WriteLine(result);
-    }
+            foreach (TreeEntryChanges c in repo.Diff.Compare<TreeChanges>(repo.Head.Tip.Tree,
+                                                                          DiffTargets.Index | DiffTargets.WorkingDirectory)) {
+                Console.WriteLine(c.Path);
+            }
+            //                var filter = new CommitFilter {Since = repo.Branches["master"], Until = repo.Branches["development"]};
+//
+            //    var results = repo.Commits.QueryBy(filter);
+//
+            //    foreach (var result in results)
+            //    {
+            //        //Process commits here.
+            //        Console.WriteLine(result);
+            //    }
             
             return files;
         }

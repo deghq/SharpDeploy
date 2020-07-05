@@ -6,7 +6,8 @@ namespace SharpDeploy
     {
         public static void Main(string[] args)
         {
-            new Deployer(Environment.CurrentDirectory).Deploy();
+            string version = "";
+            new Deployer(version).Deploy(Environment.CurrentDirectory);
             
 //            Console.WriteLine("Hello World!");
 //            
