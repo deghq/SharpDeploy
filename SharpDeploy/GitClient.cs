@@ -19,7 +19,8 @@ namespace SharpDeploy
             
             foreach (TreeEntryChanges c in repo.Diff.Compare<TreeChanges>(repo.Head.Tip.Tree,
                                                                           DiffTargets.Index | DiffTargets.WorkingDirectory)) {
-                Console.WriteLine(c.Path);
+//                Console.WriteLine(c.Path);
+                files.Add(c.Path);
             }
             //                var filter = new CommitFilter {Since = repo.Branches["master"], Until = repo.Branches["development"]};
 //

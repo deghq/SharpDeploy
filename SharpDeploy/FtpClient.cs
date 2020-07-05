@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 
 namespace SharpDeploy
@@ -16,11 +17,22 @@ namespace SharpDeploy
             this.password = password;
         }
         
-        public void Upload(string filename)
+        public void Upload(string path)
         {
             using (var client = new WebClient()) {
                 client.Credentials = new NetworkCredential(username, password);
-                client.UploadFile("ftp://" + host + "/" + filename, WebRequestMethods.Ftp.UploadFile, filename);
+                string file = Path.GetFileName(path);
+                OnUploading(new MessageEventArgs("Uploading " + file + "..."));
+                client.UploadFile("ftp://" + host + "/" + file, WebRequestMethods.Ftp.UploadFile, path);
+            }
+        }
+        
+        public event EventHandler<MessageEventArgs> Uploading;
+        
+        protected virtual void OnUploading(MessageEventArgs e)
+        {
+            if (Uploading != null) {
+                Uploading(this, e);
             }
         }
     }

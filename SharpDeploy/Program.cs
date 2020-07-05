@@ -6,13 +6,25 @@ namespace SharpDeploy
     {
         public static void Main(string[] args)
         {
-            string version = "";
-            new Deployer(version).Deploy(Environment.CurrentDirectory);
+            if (args.Length != 4) {
+                Console.WriteLine("Usage: sharpdeploy . 127.0.0.1 test password");
+                return;
+            }
             
-//            Console.WriteLine("Hello World!");
-//            
-//            Console.Write("Press any key to continue . . . ");
-//            Console.ReadKey(true);
+            string _from = ""; // TODO:
+            string to = ""; // TODO:
+            
+            string directory = args[0];
+            
+            string host = args[1];
+            string username = args[2];
+            string password = args[3];
+            
+            var deployer = new Deployer(directory, host, username, password);
+            deployer.Deploying += delegate(object sender, MessageEventArgs e) { 
+                Console.WriteLine(e.Message);
+            };
+            deployer.Deploy(_from, to);
         }
     }
 }
