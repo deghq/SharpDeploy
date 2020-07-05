@@ -19,14 +19,22 @@ namespace SharpDeploy
         
         public void Upload(string path, string file)
         {
+            Upload(path, file, "");
+        }
+        
+        public void Upload(string path, string file, string remoteDirectory)
+        {
             using (var client = new WebClient()) {
                 client.Credentials = new NetworkCredential(username, password);
-                OnUploading(new MessageEventArgs("Uploading " + file + "..."));
-                var p = ExtendedPath.GetPath(file);
+                if (remoteDirectory != "") {
+                    remoteDirectory += "/" ;
+                }
+                OnUploading(new MessageEventArgs("Uploading " + file + " to " + remoteDirectory + file + "..."));
+                var p = ExtendedPath.GetPath(remoteDirectory + file);
                 if (p.HasDirectory && !DoesFtpDirectoryExist(p.Directory)) {
                     CreateDirectory(p.Directory);
                 }
-                client.UploadFile("ftp://" + host + "/" + file, WebRequestMethods.Ftp.UploadFile, path);
+                client.UploadFile("ftp://" + host + "/" + remoteDirectory + file, WebRequestMethods.Ftp.UploadFile, path);
             }
         }
         
