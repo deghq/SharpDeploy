@@ -67,22 +67,22 @@ namespace SharpDeploy
                 Uploading(this, e);
             }
         }
+    }
+    
+    public class ExtendedPath
+    {
+        public string Directory { get; set; }
+        public string Filename { get; set; }
+        public bool HasDirectory {
+            get { return Directory != ""; }
+        }
         
-        public class ExtendedPath
+        public static ExtendedPath GetPath(string path)
         {
-            public string Directory { get; set; }
-            public string Filename { get; set; }
-            public bool HasDirectory {
-                get { return Directory != ""; }
-            }
+            string filename = Path.GetFileName(path);
+            string directory = Path.GetDirectoryName(path);
             
-            public static ExtendedPath GetPath(string path)
-            {
-                string filename = Path.GetFileName(path);
-                string directory = path.Replace(filename, "").Trim('\\');
-                
-                return new ExtendedPath { Filename = filename, Directory = directory };
-            }
+            return new ExtendedPath { Filename = filename, Directory = directory };
         }
     }
 }

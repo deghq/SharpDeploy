@@ -26,7 +26,8 @@ namespace SharpDeploy
                 deployer.Deploying += delegate(object sender, MessageEventArgs e) {
                     Console.WriteLine(e.Message);
                 };
-                deployer.Deploy(_from, to);
+//                deployer.Deploy(_from, to);
+                deployer.Deploy();
             } catch (Exception ex) {
                 Console.WriteLine(ex.Message);
             }

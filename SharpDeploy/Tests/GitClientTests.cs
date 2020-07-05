@@ -10,7 +10,10 @@ namespace SharpDeploy.Tests
         public void TestDiffFilles()
         {
             var c = new GitClient(@"D:\xampp\htdocs\red\sugal");
-            var files = c.DiffFiles("", "");
+            var files = c.DiffFiles();
+            foreach (var f in files) {
+                Console.WriteLine(f);
+            }
         }
     }
 }

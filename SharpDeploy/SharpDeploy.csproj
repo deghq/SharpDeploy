@@ -69,6 +69,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\DeployerTests.cs" />
+    <Compile Include="Tests\ExtendedPathTests.cs" />
     <Compile Include="Tests\FtpClientTests.cs" />
     <Compile Include="Tests\GitClientTests.cs" />
   </ItemGroup>

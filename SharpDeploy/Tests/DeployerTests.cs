@@ -16,11 +16,10 @@ namespace SharpDeploy.Tests
             
             var d = new Deployer(path, host, username, password);
             
-            string version = "736b6b086babd446d3df082913a075096875c5f2";
             d.Deploying += delegate(object sender, MessageEventArgs e) { 
                 Console.WriteLine(e.Message);
             };
-            d.Deploy(version, "");
+            d.Deploy();
         }
     }
 }

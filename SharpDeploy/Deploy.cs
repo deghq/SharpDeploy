@@ -18,10 +18,10 @@ namespace SharpDeploy
             this.password = password;
         }
         
-        public void Deploy(string _from, string to)
+        public void Deploy()
         {
             var git = new GitClient(path);
-            var files = git.DiffFiles(_from, to);
+            var files = git.DiffFiles();
             
             var ftp = new FtpClient(host, username, password);
             ftp.Uploading += delegate(object sender, MessageEventArgs e) { 
