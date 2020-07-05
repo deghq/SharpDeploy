@@ -20,11 +20,16 @@ namespace SharpDeploy
             string username = args[2];
             string password = args[3];
             
-            var deployer = new Deployer(directory, host, username, password);
-            deployer.Deploying += delegate(object sender, MessageEventArgs e) { 
-                Console.WriteLine(e.Message);
-            };
-            deployer.Deploy(_from, to);
+            try {
+                
+                var deployer = new Deployer(directory, host, username, password);
+                deployer.Deploying += delegate(object sender, MessageEventArgs e) {
+                    Console.WriteLine(e.Message);
+                };
+                deployer.Deploy(_from, to);
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

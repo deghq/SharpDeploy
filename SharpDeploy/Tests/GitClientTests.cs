@@ -7,7 +7,7 @@ namespace SharpDeploy.Tests
     public class GitClientTests
     {
         [Test]
-        public void TestMethod()
+        public void TestDiffFilles()
         {
             var c = new GitClient(@"D:\xampp\htdocs\red\sugal");
             var files = c.DiffFiles("", "");

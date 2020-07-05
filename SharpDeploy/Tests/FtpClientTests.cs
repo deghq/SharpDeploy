@@ -6,11 +6,24 @@ namespace SharpDeploy.Tests
     [TestFixture]
     public class FtpClientTests
     {
-        [Test]
-        public void TestMethod()
+        FtpClient c;
+        
+        [SetUpAttribute]
+        public void Setup()
         {
-            var c = new FtpClient("127.0.0.1", "test", "password");
-            c.Upload("hello.txt");
+            c = new FtpClient("127.0.0.1", "test", "password");
+        }
+        
+        [Test]
+        public void TestUpload()
+        {
+            c.Upload("hello.txt", "hello.txt");
+        }
+        
+        [Test]
+        public void TestCreateDirectory()
+        {
+            c.CreateDirectory("test");
         }
     }
 }

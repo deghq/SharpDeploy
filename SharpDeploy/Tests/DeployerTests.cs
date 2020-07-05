@@ -7,7 +7,7 @@ namespace SharpDeploy.Tests
     public class DeployerTests
     {
         [Test]
-        public void TestMethod()
+        public void TestDeploy()
         {
             string path = @"D:\Contrib\SharpDeploy";
             string host = "127.0.0.1";

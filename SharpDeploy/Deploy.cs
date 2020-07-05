@@ -29,10 +29,11 @@ namespace SharpDeploy
             };
             
             foreach (var f in files) {
-                string file = Path.Combine(path, f);
+                string filename = Path.Combine(path, f);
                 
-//                OnDeploying(new MessageEventArgs("Uploading " + file + "..."));
-                ftp.Upload(file);
+                OnDeploying(new MessageEventArgs("Deploying " + filename + "..."));
+                string file = filename.Replace(path, "");
+                ftp.Upload(filename, file);
             }
         }
         
