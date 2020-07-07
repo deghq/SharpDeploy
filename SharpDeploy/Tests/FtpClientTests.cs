@@ -21,7 +21,7 @@ namespace SharpDeploy.Tests
         [Test]
         public void TestUpload()
         {
-            c.Upload(@"D:\Contrib\SharpDeploy\SharpDeploy\bin\Debug\hello.txt", "test\\test2\\hello2.txt");
+            c.Upload(@"D:\Contrib\SharpDeploy\SharpDeploy\Program.cs", "test\\test2\\Program.cs");
         }
         
         [Test]
